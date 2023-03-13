@@ -1,0 +1,27 @@
+{
+  "name": "nodebrowser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.3",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "appId": "ru.cubalab.CubaSmartBox",
+    "productName": "CubaSmartBox",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icons/ico.ico"
+    }
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Browser</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #333333;
+      }
+      .link {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #eee;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 38px;
+        padding: 2px;
+        opacity: .5;
+        transition: all 0.3s ease-in-out;
+      }
+      .link:hover, .link:focus {
+        opacity: 1;
+        box-shadow: 7px 7px 11px rgba(0, 3, 3, 0.7);
+      }
+      .link a {
+        display: block;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 19%;
+      }
+      .link a img {
+        /* max-width: 100%; */
+        max-height: 100%;
+        margin: auto;
+      }
+      .selected {
+        opacity: 1;
+        box-shadow: 7px 7px 11px rgba(0, 3, 3, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="link">
+      <a href="https://www.wink.ru">
+        <img src="icons/wink.png" alt="Wink">
+      </a>
+    </div>
+    <div class="link">
+      <a href="https://www.ivi.ru">
+        <img src="icons/ivi.jpg" alt="IVI">
+      </a>
+    </div>
+    <div class="link">
+      <a href="https://www.okko.ru">
+        <img src="icons/okko.jpg" alt="OKKO">
+      </a>
+    </div>
+
+    <script>
+      const links = document.querySelectorAll('.link');
+      let selectedIndex = 0;
+      links[selectedIndex].classList.add('selected');
+      
+      document.addEventListener('keydown', event => {
+        event.preventDefault();
+        const keyName = event.key;
+        if (keyName === 'ArrowRight') {
+          selectedIndex = (selectedIndex === links.length - 1) ? 0 : selectedIndex + 1;
+        } else if (keyName === 'ArrowLeft') {
+          selectedIndex = (selectedIndex === 0) ? links.length - 1 : selectedIndex - 1;
+        } else if (keyName === 'Enter') {
+          const selectedLink = document.querySelector('.selected a');
+          window.open(selectedLink.href, '_self');
+        } else {
+          return;
+        }
+        links.forEach(link => link.classList.remove('selected'));
+        links[selectedIndex].classList.add('selected');
+ 
+
+      });
+      links.forEach(link => {
+        link.addEventListener('mouseenter', event => {
+          links.forEach(link => link.classList.remove('selected'));
+          link.classList.add('selected');
+        });
+      });
+
+      // document.addEventListener('contextmenu', event => {
+      //   event.preventDefault();
+      //   const selectedLink = document.querySelector('.selected a');
+      //   window.open(selectedLink.href, '_self');
+      // });
+      document.addEventListener('click', event => {
+        event.preventDefault();
+        const selectedLink = document.querySelector('.selected a');
+        window.open(selectedLink.href, '_self');
+      });
+    </script>
+  </body>
+</html>
