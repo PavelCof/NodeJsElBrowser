@@ -1,47 +1,51 @@
 {
-  "name": "brows",
-  "version": "1.0.0",
-  "description": "",
+  "name": "cubaapp",
+  "version": "1.0.3",
+  "description": "CinemaCuba",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"
   },
+  "author": "PavelCoff",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^23.2.1",
+    "electron-builder": "^24.1.2",
+    "electron-updater": "^5.3.0"
+  },
   "build": {
-    "appId": "com.example.my-electron-app",
-    "productName": "My Electron App",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "index.js"
-    ],
-    "mac": {
-      "category": "your.app.category.type",
-      "target": [
-        "dmg"
-      ]
-    },
+    "appId": "ru.cubalab.cinema",
+    "productName": "CinemaCuba",
     "win": {
       "target": [
-        "nsis"
+        "portable"
       ]
     },
     "extraResources": [
-      "node_modules/electron-reload/**",
-      "node_modules/chokidar/**",
-      "node_modules/readdirp/**"
-    ]
+      {
+        "from": "node_modules/electron-reload",
+        "to": "electron-reload"
+      },
+      {
+        "from": "node_modules/electron-dl",
+        "to": "electron-dl"
+      }
+    ],
+    "directories": {
+      "output": "build"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "chokidar": "^3.5.3",
-    "electron": "^23.2.1",
-    "electron-builder": "^23.6.0",
-    "electron-reload": "^2.0.0-alpha.1",
-    "picomatch": "^2.3.1",
-    "readdirp": "^3.6.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelCof/NodeJsElBrowser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PavelCof/NodeJsElBrowser/issues"
+  },
+  "homepage": "https://github.com/PavelCof/NodeJsElBrowser#readme",
+  "dependencies": {
+    "electron-dl": "^3.5.0",
+    "electron-reload": "^2.0.0-alpha.1"
   }
 }
